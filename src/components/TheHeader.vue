@@ -21,8 +21,12 @@
     <template #menu>
       <div class="flex flex-row items-center justify-end w-full h-full space-x-1">
         <button class="border-none btn" @click="$router.push('/page')">Page 1</button>
-        <div class="px-5 text-lg cursor-pointer" @click="$router.push('/settings')">
-          <i-fluent-settings-32-regular class="text-light dark:text-light-dark"></i-fluent-settings-32-regular>
+        <div
+          class="pr-5 text-lg cursor-pointer txt-lighter dark:txt-light"
+          @click="user.toggleDarkMode()"
+        >
+          <i-fa-solid:moon v-if="!user.isDarkMode.value"></i-fa-solid:moon>
+          <i-fa-solid:sun v-else></i-fa-solid:sun>
         </div>
       </div>
     </template>

@@ -1,9 +1,9 @@
 <template>
-  <div class="text-xl text-gray-500 w-max dark:text-gray-300">User {{ user.name }}</div>
+  <div class="text-xl text-gray-500 w-max dark:text-gray-300">Settings</div>
   <sw-switch
     @change="user.toggleDarkMode()"
     :checked="user.isDarkMode.value"
-    class="mt-5 secondary w-max"
+    class="mt-5 switch-secondary"
   >
     <div class="ml-2">Mode sombre</div>
   </sw-switch>

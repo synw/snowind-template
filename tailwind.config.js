@@ -7,6 +7,7 @@ module.exports = {
   darkMode: 'class',
   plugins: [
     require('@tailwindcss/forms'),
-    require('@snowind/plugin')
+    require('@snowind/plugin'),
+    require('tailwindcss-semantic-colors')
   ],
 }
