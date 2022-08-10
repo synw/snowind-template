@@ -29,7 +29,11 @@ export default defineConfig({
   //base: process.env.NODE_ENV === 'production' ? '/snowind-stories/' : './',
   resolve: {
     alias: [
-      { find: '@/', replacement: '/src/' }
+      { find: '@/', replacement: '/src/' },
+      {
+        find: 'vue',
+        replacement: path.resolve("./node_modules/vue"),
+      },
     ]
   },
 })

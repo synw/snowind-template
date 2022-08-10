@@ -1,9 +1,9 @@
 <template>
-  <div :class="{ dark: user.isDarkMode.value == true }" class="h-screen flex flex-col">
+  <div :class="{ dark: user.isDarkMode.value == true }" class="flex flex-col h-screen">
     <the-header></the-header>
-    <div class="flex flex-row h-full w-full">
+    <div class="flex flex-row w-full h-full">
       <the-sidebar></the-sidebar>
-      <div class="p-3 background container">
+      <div class="container p-3 background">
         <router-view></router-view>
       </div>
     </div>
