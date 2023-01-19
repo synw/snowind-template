@@ -1,54 +1,22 @@
 <template>
   <div>
-    <h1 class="text-success">{{ msg }}</h1>
-    <button class="mt-3 btn primary" @click="count++; popToast()">count is: {{ count }}</button>
-    <sw-toast :show="isToastVisible" class="secondary">
-      <div>Change: {{ count }}</div>
-    </sw-toast>
+    <button class="mt-3 btn primary" @click="count++; popMsg()">count is: {{ count }}</button>
   </div>
 </template>
 
-<script lang="ts">
-import { ref, defineComponent } from 'vue';
-import { SwToast, useToast } from '@snowind/toast';
+<script setup lang="ts">
+import { ref } from 'vue';
+import { msg } from '@/services/notify';
 
-export default defineComponent({
-  components: {
-    SwToast,
-  },
-  props: {
-    msg: {
-      type: String,
-      required: true,
-    },
-  },
-  setup: () => {
-    const count = ref(0);
-    const { isToastVisible, popToast } = useToast();
+defineProps({
+  msg: {
+    type: String,
+    required: true,
+  }
+});
+const count = ref(0);
 
-    return {
-      count,
-      isToastVisible,
-      popToast,
-    }
-  },
-})
+function popMsg() {
+  msg.info("Counter", `Count is ${count.value}`)
+}
 </script>
-
-<style scoped>
-a {
-  color: #42b983;
-}
-
-label {
-  margin: 0 0.5em;
-  font-weight: bold;
-}
-
-code {
-  background-color: #eee;
-  padding: 2px 4px;
-  border-radius: 4px;
-  color: #304455;
-}
-</style>

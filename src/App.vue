@@ -1,19 +1,34 @@
 <template>
-  <div :class="{ dark: user.isDarkMode.value == true }" class="flex flex-col h-screen">
+  <div class="flex flex-col h-screen background">
     <the-header></the-header>
     <div class="flex flex-row w-full h-full">
-      <the-sidebar></the-sidebar>
-      <div class="container p-3 background">
+      <div class="container p-3 mx-auto background">
         <router-view></router-view>
       </div>
     </div>
   </div>
+  <Toast />
+  <ConfirmDialog>
+    <template #message="slotProps">
+      <div class="flex flex-row items-center p-4">
+        <div>
+          <named-icon :icon="`${slotProps.message.icon}`" class="text-3xl"></named-icon>
+        </div>
+        <div class="pl-2">{{ slotProps.message.message }}</div>
+      </div>
+    </template>
+  </ConfirmDialog>
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import TheHeader from "@/components/TheHeader.vue";
-import TheSidebar from "./components/TheSidebar.vue";
+import ConfirmDialog from "primevue/confirmdialog";
+import Toast from "primevue/toast";
 import { user } from "@/state";
+import { initNotifyService } from "@/services/notify";
+
+onMounted(() => initNotifyService())
 </script>
 
 

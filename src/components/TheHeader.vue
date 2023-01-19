@@ -4,10 +4,7 @@
       <i-ion-arrow-back-outline class="inline-flex ml-2 text-3xl" v-if="!isHome"></i-ion-arrow-back-outline>
     </template>
     <template #mobile-branding>
-      <div
-        class="inline-flex flex-row items-center h-full pt-1 ml-2 text-2xl truncate"
-        @click="$router.push('/')"
-      >
+      <div class="inline-flex flex-row items-center h-full pt-1 ml-2 text-2xl truncate" @click="$router.push('/')">
         <img alt="Snowind logo" src="@/assets/logo.png" v-if="isHome" class="inline-block mx-3" />
         <span class="text-lg">Snowind</span>
       </div>
@@ -21,10 +18,7 @@
     <template #menu>
       <div class="flex flex-row items-center justify-end w-full h-full space-x-1">
         <button class="border-none btn" @click="$router.push('/page')">Page 1</button>
-        <div
-          class="pr-5 text-lg cursor-pointer txt-lighter dark:txt-light"
-          @click="user.toggleDarkMode()"
-        >
+        <div class="pr-5 text-lg cursor-pointer txt-lighter dark:txt-light" @click="user.toggleDarkMode()">
           <i-fa-solid:moon v-if="!user.isDarkMode.value"></i-fa-solid:moon>
           <i-fa-solid:sun v-else></i-fa-solid:sun>
         </div>
