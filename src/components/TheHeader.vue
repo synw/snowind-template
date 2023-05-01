@@ -1,5 +1,5 @@
 <template>
-  <sw-header class="w-full h-16 primary" @togglemenu="isMenuVisible = !isMenuVisible">
+  <sw-topbar :topbar="topBar" class="z-10 flex items-center w-full h-16 primary" breakpoint="lg">
     <template #mobile-back>
       <i-ion-arrow-back-outline class="inline-flex ml-2 text-3xl" v-if="!isHome"></i-ion-arrow-back-outline>
     </template>
@@ -24,44 +24,40 @@
         </div>
       </div>
     </template>
-  </sw-header>
-  <sw-mobile-menu :is-visible="isMenuVisible">
-    <div class="flex flex-col p-3 space-y-5">
-      <router-link to="/page" @click="closeMenu()">Page 1</router-link>
-      <router-link to="/settings" @click="closeMenu()">
-        <i-clarity-settings-line class="inline-block"></i-clarity-settings-line>
-        <span>&nbsp;&nbsp;Options</span>
-      </router-link>
-    </div>
-  </sw-mobile-menu>
+    <template #mobile-menu>
+      <div class="flex flex-col p-3 pb-5 space-y-3 lighter border-y-2 bord-primary">
+        <div>
+          <button class="border-none btn" @click="$router.push('/page'); topBar.closeMenu()">Page 1</button>
+        </div>
+        <div class="text-lg cursor-pointer" @click=" user.toggleDarkMode(); topBar.closeMenu() ">
+          <template v-if=" !user.isDarkMode.value ">
+            <i-fa-solid:moon></i-fa-solid:moon>&nbsp;Dark mode
+          </template>
+          <template v-else>
+            <i-fa-solid:sun></i-fa-solid:sun>&nbsp;Light mode
+          </template>
+        </div>
+      </div>
+    </template>
+  </sw-topbar>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
-import { SwHeader, SwMobileMenu } from "@snowind/header";
-import router from '@/router';
+<script setup lang="ts">
+import { ref, computed } from 'vue';
+import { SwTopbar, useTopbar } from "@snowind/header";
 import { user } from "@/state";
+import { useRouter } from 'vue-router';
 
-export default defineComponent({
-  components: {
-    SwHeader,
-    SwMobileMenu,
-  },
-  setup() {
-    const isMenuVisible = ref(false);
+const isMenuVisible = ref(false);
+const router = useRouter()
+const topBar = useTopbar(router);
 
-    const isHome = computed<boolean>(() => router.currentRoute.value.path == "/");
-
-    function closeMenu() {
-      isMenuVisible.value = false;
-    }
-
-    return {
-      isMenuVisible,
-      isHome,
-      user,
-      closeMenu,
-    }
-  }
-})
+const isHome = computed<boolean>(() => router.currentRoute.value.path == "/");
 </script>
+
+<style lang="sass">
+#mobile-menu
+  @apply absolute left-0 z-40 flex flex-col w-full space-y-3 text-xl top-16 lighter
+*
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+</style>

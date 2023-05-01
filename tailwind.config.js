@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   content: [
     './index.html',
@@ -10,4 +12,9 @@ module.exports = {
     require('@snowind/plugin'),
     require('tailwindcss-semantic-colors')
   ],
+  /*theme: {
+    extend: {
+      semanticColors: {}
+    }
+  }*/
 }

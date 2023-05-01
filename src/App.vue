@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-col h-screen background">
-    <the-header></the-header>
+  <div class="h-screen background">
+    <the-header class="h-16"></the-header>
     <div class="flex flex-row w-full h-full">
-      <div class="container p-3 mx-auto background">
+      <div class="container p-3 pb-8 mx-auto background">
         <router-view></router-view>
       </div>
     </div>
@@ -11,9 +11,9 @@
   <ConfirmDialog>
     <template #message="slotProps">
       <div class="flex flex-row items-center p-4">
-        <div>
+        <!-- div>
           <named-icon :icon="`${slotProps.message.icon}`" class="text-3xl"></named-icon>
-        </div>
+        </div -->
         <div class="pl-2">{{ slotProps.message.message }}</div>
       </div>
     </template>
@@ -25,7 +25,6 @@ import { onMounted } from 'vue';
 import TheHeader from "@/components/TheHeader.vue";
 import ConfirmDialog from "primevue/confirmdialog";
 import Toast from "primevue/toast";
-import { user } from "@/state";
 import { initNotifyService } from "@/services/notify";
 
 onMounted(() => initNotifyService())
