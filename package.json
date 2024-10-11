@@ -8,30 +8,32 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@primevue/themes": "^4.1.0",
     "@snowind/header": "^0.1.0",
     "@snowind/plugin": "^0.5.0",
     "@snowind/sidebar": "^0.1.0",
     "@snowind/state": "^0.2.0",
     "primeicons": "^7.0.0",
-    "primevue": "3.52.0",
-    "vue": "3.4.27",
-    "vue-router": "4.3.3"
+    "primevue": "4.1.0",
+    "tailwindcss-primeui": "^0.3.4",
+    "vue": "3.5.11",
+    "vue-router": "4.4.5"
   },
   "devDependencies": {
-    "@iconify/json": "2.2.218",
-    "@tailwindcss/forms": "^0.5.7",
-    "@vitejs/plugin-vue": "5.0.5",
-    "@vue/compiler-sfc": "3.4.27",
-    "autoprefixer": "^10.4.19",
+    "@iconify/json": "2.2.258",
+    "@tailwindcss/forms": "^0.5.9",
+    "@vitejs/plugin-vue": "5.1.4",
+    "@vue/compiler-sfc": "3.5.11",
+    "autoprefixer": "^10.4.20",
     "path": "^0.12.7",
-    "postcss": "8.4.38",
-    "sass": "1.77.4",
-    "tailwindcss": "^3.4.4",
+    "postcss": "8.4.47",
+    "sass": "1.79.5",
+    "tailwindcss": "^3.4.13",
     "tailwindcss-semantic-colors": "^0.2.0",
-    "tslib": "2.6.3",
-    "typescript": "^5.4.5",
-    "unplugin-icons": "^0.19.0",
-    "unplugin-vue-components": "^0.27.0",
-    "vite": "5.2.13"
+    "tslib": "2.7.0",
+    "typescript": "^5.6.3",
+    "unplugin-icons": "^0.19.3",
+    "unplugin-vue-components": "^0.27.4",
+    "vite": "5.4.8"
   }
 }
