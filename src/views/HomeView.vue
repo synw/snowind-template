@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col mb-8 space-y-3">
     <div>
-      <button class="mt-5 btn light">
+      <button class="mt-5 btn txt-primary">
         <router-link to="/page">Page 1</router-link>
       </button>
     </div>

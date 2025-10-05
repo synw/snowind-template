@@ -1,15 +1,250 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "../scss/main.scss";
 
-
-@layer tailwind-base, primevue, tailwind-utilities;
-
-@layer tailwind-base {
-    @tailwind base;
+@utility primary {
+    /* Use dark variables as fallbacks; if .dark class isn't active, light vars will be used */
+    background-color: var(--primary-dark-bg, var(--primary-light-bg));
+    color: var(--primary-dark-txt, var(--primary-light-txt));
 }
 
-@layer tailwind-utilities {
-    @tailwind components;
-    @tailwind utilities;
+@utility txt-primary {
+    color: var(--primary-dark-bg, var(--primary-light-bg));
+}
+
+@utility block-primary {
+    background-color: var(--primary-dark-bg, var(--primary-light-bg));
+}
+
+@utility bord-primary {
+    border-color: var(--primary-dark-bg, var(--primary-light-bg));
+}
+
+@utility secondary {
+    background-color: var(--secondary-dark-bg, var(--secondary-light-bg));
+    color: var(--secondary-dark-txt, var(--secondary-light-txt));
+}
+
+@utility txt-secondary {
+    color: var(--secondary-dark-bg, var(--secondary-light-bg));
+}
+
+@utility block-secondary {
+    background-color: var(--secondary-dark-bg, var(--secondary-light-bg));
+}
+
+@utility bord-secondary {
+    border-color: var(--secondary-dark-bg, var(--secondary-light-bg));
+}
+
+@utility success {
+    background-color: var(--success-dark-bg, var(--success-light-bg));
+    color: var(--success-dark-txt, var(--success-light-txt));
+}
+
+@utility txt-success {
+    color: var(--success-dark-bg, var(--success-light-bg));
+}
+
+@utility block-success {
+    background-color: var(--success-dark-bg, var(--success-light-bg));
+}
+
+@utility bord-success {
+    border-color: var(--success-dark-bg, var(--success-light-bg));
+}
+
+@utility warning {
+    background-color: var(--warning-dark-bg, var(--warning-light-bg));
+    color: var(--warning-dark-txt, var(--warning-light-txt));
+}
+
+@utility txt-warning {
+    color: var(--warning-dark-bg, var(--warning-light-bg));
+}
+
+@utility block-warning {
+    background-color: var(--warning-dark-bg, var(--warning-light-bg));
+}
+
+@utility bord-warning {
+    border-color: var(--warning-dark-bg, var(--warning-light-bg));
+}
+
+@utility danger {
+    background-color: var(--danger-dark-bg, var(--danger-light-bg));
+    color: var(--danger-dark-txt, var(--danger-light-txt));
+}
+
+@utility txt-danger {
+    color: var(--danger-dark-bg, var(--danger-light-bg));
+}
+
+@utility block-danger {
+    background-color: var(--danger-dark-bg, var(--danger-light-bg));
+}
+
+@utility bord-danger {
+    border-color: var(--danger-dark-bg, var(--danger-light-bg));
+}
+
+@utility light {
+    background-color: var(--light-dark-bg, var(--light-light-bg));
+    color: var(--light-dark-txt, var(--light-light-txt));
+}
+
+@utility txt-light {
+    color: var(--light-dark-bg, var(--light-light-bg));
+}
+
+@utility block-light {
+    background-color: var(--light-dark-bg, var(--light-light-bg));
+}
+
+@utility bord-light {
+    border-color: var(--light-dark-bg, var(--light-light-bg));
+}
+
+@utility lighter {
+    background-color: var(--lighter-dark-bg, var(--lighter-light-bg));
+    color: var(--lighter-dark-txt, var(--lighter-light-txt));
+}
+
+@utility txt-lighter {
+    color: var(--lighter-dark-bg, var(--lighter-light-bg));
+}
+
+@utility block-lighter {
+    background-color: var(--lighter-dark-bg, var(--lighter-light-bg));
+}
+
+@utility bord-lighter {
+    border-color: var(--lighter-dark-bg, var(--lighter-light-bg));
+}
+
+@utility semilight {
+    background-color: var(--semilight-dark-bg, var(--semilight-light-bg));
+    color: var(--semilight-dark-txt, var(--semilight-light-txt));
+}
+
+@utility txt-semilight {
+    color: var(--semilight-dark-bg, var(--semilight-light-bg));
+}
+
+@utility block-semilight {
+    background-color: var(--semilight-dark-bg, var(--semilight-light-bg));
+}
+
+@utility bord-semilight {
+    border-color: var(--semilight-dark-bg, var(--semilight-light-bg));
+}
+
+@utility background {
+    background-color: var(--background-dark-bg, var(--background-light-bg));
+    color: var(--background-dark-txt, var(--background-light-txt));
+}
+
+@utility txt-background {
+    color: var(--background-dark-bg, var(--background-light-bg));
+}
+
+@utility block-background {
+    background-color: var(--background-dark-bg, var(--background-light-bg));
+}
+
+@utility bord-background {
+    border-color: var(--background-dark-bg, var(--background-light-bg));
+}
+
+@utility foreground {
+    background-color: var(--foreground-dark-bg, var(--foreground-light-bg));
+    color: var(--foreground-dark-txt, var(--foreground-light-txt));
+}
+
+@utility txt-foreground {
+    color: var(--foreground-dark-bg, var(--foreground-light-bg));
+}
+
+@utility block-foreground {
+    background-color: var(--foreground-dark-bg, var(--foreground-light-bg));
+}
+
+@utility bord-foreground {
+    border-color: var(--foreground-dark-bg, var(--foreground-light-bg));
+}
+
+@utility secondary-strong {
+    background-color: var(--secondary-strong-dark-bg, var(--secondary-strong-light-bg));
+    color: var(--secondary-strong-dark-txt, var(--secondary-strong-light-txt));
+}
+
+@utility txt-secondary-strong {
+    color: var(--secondary-strong-dark-bg, var(--secondary-strong-light-bg));
+}
+
+@utility block-secondary-strong {
+    background-color: var(--secondary-strong-dark-bg, var(--secondary-strong-light-bg));
+}
+
+@utility bord-secondary-strong {
+    border-color: var(--secondary-strong-dark-bg, var(--secondary-strong-light-bg));
+}
+
+/* Define the overrides within the .dark context */
+:where(.dark) {
+    --primary-dark-bg: var(--primary-dark-bg);
+    /* Ensures dark vars are used */
+    --primary-dark-txt: var(--primary-dark-txt);
+    --primary-light-bg: var(--primary-light-bg);
+    /* Keeps light vars as fallback */
+    --primary-light-txt: var(--primary-light-txt);
+
+    --secondary-dark-bg: var(--secondary-dark-bg);
+    --secondary-dark-txt: var(--secondary-dark-txt);
+    --secondary-light-bg: var(--secondary-light-bg);
+    --secondary-light-txt: var(--secondary-light-txt);
+
+    --success-dark-bg: var(--success-dark-bg);
+    --success-dark-txt: var(--success-dark-txt);
+    --success-light-bg: var(--success-light-bg);
+    --success-light-txt: var(--success-light-txt);
+
+    --warning-dark-bg: var(--warning-dark-bg);
+    --warning-dark-txt: var(--warning-dark-txt);
+    --warning-light-bg: var(--warning-light-bg);
+    --warning-light-txt: var(--warning-light-txt);
+
+    --danger-dark-bg: var(--danger-dark-bg);
+    --danger-dark-txt: var(--danger-dark-txt);
+    --danger-light-bg: var(--danger-light-bg);
+    --danger-light-txt: var(--danger-light-txt);
+
+    --light-dark-bg: var(--light-dark-bg);
+    --light-dark-txt: var(--light-dark-txt);
+    --light-light-bg: var(--light-light-bg);
+    --light-light-txt: var(--light-light-txt);
+
+    --lighter-dark-bg: var(--lighter-dark-bg);
+    --lighter-dark-txt: var(--lighter-dark-txt);
+    --lighter-light-bg: var(--lighter-light-bg);
+    --lighter-light-txt: var(--lighter-light-txt);
+
+    --semilight-dark-bg: var(--semilight-dark-bg);
+    --semilight-dark-txt: var(--semilight-dark-txt);
+    --semilight-light-bg: var(--semilight-light-bg);
+    --semilight-light-txt: var(--semilight-light-txt);
+
+    --background-dark-bg: var(--background-dark-bg);
+    --background-dark-txt: var(--background-dark-txt);
+    --background-light-bg: var(--background-light-bg);
+    --background-light-txt: var(--background-light-txt);
+
+    --foreground-dark-bg: var(--foreground-dark-bg);
+    --foreground-dark-txt: var(--foreground-dark-txt);
+    --foreground-light-bg: var(--foreground-light-bg);
+    --foreground-light-txt: var(--foreground-light-txt);
+
+    --secondary-strong-dark-bg: var(--secondary-strong-dark-bg);
+    --secondary-strong-dark-txt: var(--secondary-strong-dark-txt);
+    --secondary-strong-light-bg: var(--secondary-strong-light-bg);
+    --secondary-strong-light-txt: var(--secondary-strong-light-txt);
 }

@@ -18,14 +18,14 @@
     <template #menu>
       <div class="flex flex-row items-center justify-end w-full h-full space-x-1">
         <button class="border-none btn" @click="$router.push('/page')">Page 1</button>
-        <div class="pr-5 text-lg cursor-pointer txt-lighter dark:txt-light" @click="user.toggleDarkMode()">
+        <div class="pr-5 text-lg cursor-pointer txt-light dark:txt-light" @click="user.toggleDarkMode()">
           <i-fa-solid:moon v-if="!user.isDarkMode.value"></i-fa-solid:moon>
           <i-fa-solid:sun v-else></i-fa-solid:sun>
         </div>
       </div>
     </template>
     <template #mobile-menu>
-      <div class="flex flex-col p-3 pb-5 space-y-3 lighter border-y-2 bord-primary">
+      <div class="flex flex-col p-3 pb-5 space-y-3 border-y-2 bord-primary">
         <div>
           <button class="border-none btn" @click="$router.push('/page'); topBar.closeMenu()">Page 1</button>
         </div>
@@ -56,8 +56,11 @@ const isHome = computed<boolean>(() => router.currentRoute.value.path == "/");
 </script>
 
 <style lang="sass">
+/* If using the default theme without custom @theme */
+@reference "../assets/index.css"
+
 #mobile-menu
   @apply absolute left-0 z-40 flex flex-col w-full space-y-3 text-xl top-16 lighter
-*
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  *
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 </style>
