@@ -1,6 +1,6 @@
 <template>
-  <div class="h-full min-h-svh w-full background" :class="`theme-${theme}`">
-    <the-header class="h-16 primary fixed"></the-header>
+  <div class="h-full min-h-svh w-full">
+    <the-header class="h-16 prim fixed"></the-header>
     <the-mobile-menu class="top-16 fixed lighter z-50">
       <div class="p-3">Menu</div>
     </the-mobile-menu>
@@ -25,26 +25,25 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onBeforeMount, onMounted } from 'vue';
 import TheHeader from "@/components/TheHeader.vue";
 import ConfirmDialog from "primevue/confirmdialog";
 import Toast from "primevue/toast";
 import { initNotifyService } from "@/services/notify";
-import { theme } from './state';
 import TheFooter from './components/TheFooter.vue';
 import TheMobileMenu from './components/TheMobileMenu.vue';
+import { initState } from './state.js';
 
+onBeforeMount(() => initState());
 onMounted(() => initNotifyService())
 </script>
+<style lang="scss">
+@use "./scss/main.scss";
+</style>
 <style lang="css">
 @import "./styles/global.css";
 
 .main-h {
   height: calc(100% - 4rem)
 }
-</style>
-
-
-<style lang="scss">
-@use "./scss/main.scss";
 </style>

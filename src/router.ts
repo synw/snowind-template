@@ -17,6 +17,13 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title: "Page"
     }
+  },
+  {
+    path: "/styleguide",
+    component: () => import("./views/StyleGuideView.vue"),
+    meta: {
+      title: "Styleguide"
+    }
   }
 ]
 
