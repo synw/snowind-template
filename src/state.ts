@@ -1,14 +1,14 @@
 import { User } from "@snowind/state";
 import { useStorage } from '@vueuse/core';
 import { useRouter } from "vue-router";
-import { useMobileMenu } from "./services/mobile_menu";
+import { useMobileMenu } from "./services/mobile_menu.js";
 
 const router = useRouter();
 
 const user = new User();
 const mobileMenu = useMobileMenu(router);
 const store = useStorage<{ theme: string }>('store', {
-    theme: "bluestar"
+    theme: "graphite"
 });
 
 function initState() {

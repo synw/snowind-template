@@ -1,6 +1,12 @@
-@use "./default.scss";
-@use "./bluestar.scss";
-@use "./brown.scss";
-@use "./pink-black.scss";
-@use "./lime-black.scss";
-@use "./black.scss";
+@use "./default.scss" as *;
+@use "./black.scss" as *;
+@use "./navy.scss" as *;
+@use "./forest.scss" as *;
+@use "./slate.scss" as *;
+@use "./royal.scss" as *;
+@use "./teal.scss" as *;
+@use "./pearl.scss" as *;
+@use "./sandstone.scss" as *;
+@use "./cloud.scss" as *;
+@use "./graphite.scss" as *;
+@use "./airy-soft.scss" as *;

@@ -3,7 +3,6 @@
     "target": "esnext",
     "module": "nodenext",
     "moduleResolution": "nodenext",
-    "ignoreDeprecations": "6.0",
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
@@ -19,10 +18,12 @@
       "vite/client"
     ],
     "rootDir": "./src",
-    "baseUrl": ".",
     "paths": {
+      "*": [
+        "./*"
+      ],
       "@/*": [
-        "src/*"
+        "./src/*"
       ]
     }
   },

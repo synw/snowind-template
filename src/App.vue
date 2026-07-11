@@ -4,9 +4,9 @@
     <the-mobile-menu class="top-16 fixed lighter z-50">
       <div class="p-3">Menu</div>
     </the-mobile-menu>
-    <div class="w-full top-16 fixed overflow-y-auto main-h z-10">
-      <div class="background flex flex-col w-full">
-        <router-view class="container mx-auto"></router-view>
+    <div class="w-full top-16 fixed overflow-y-auto z-10 main-h">
+      <div class="background flex flex-col w-full h-full">
+        <router-view class="container mx-auto grow"></router-view>
         <the-footer></the-footer>
       </div>
     </div>
@@ -29,7 +29,7 @@ import { onBeforeMount, onMounted } from 'vue';
 import TheHeader from "@/components/TheHeader.vue";
 import ConfirmDialog from "primevue/confirmdialog";
 import Toast from "primevue/toast";
-import { initNotifyService } from "@/services/notify";
+import { initNotifyService } from "@/services/notify.js";
 import TheFooter from './components/TheFooter.vue';
 import TheMobileMenu from './components/TheMobileMenu.vue';
 import { initState } from './state.js';
