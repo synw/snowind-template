@@ -6,9 +6,9 @@
 
 | Repo | Path | Purpose |
 |------|------|---------|
-| snowind-template | `/` | Vue 3 + TypeScript SPA starter with Tailwind CSS v4, PrimeVue theming, and AI streaming |
+| snowind-template | `/` | Vue 3 + TypeScript SPA starter with Tailwind CSS v4 theming, and AI streaming |
 
-**Description**: A starter template for [Snowind](https://github.com/synw/snowind) — a Vue 3 SPA with 12 color themes, Tailwind CSS v4, PrimeVue UI components, mobile-responsive layout, and real-time AI inference streaming.
+**Description**: A starter template for [Snowind](https://github.com/synw/snowind) — a Vue 3 SPA with 12 color themes, Tailwind CSS v4, mobile-responsive layout, and real-time AI inference streaming.
 
 ## 2. Architecture Principles
 
@@ -16,7 +16,7 @@
 |-----------|--------|-----------|
 | Composition API First | All components use `<script setup lang="ts">` | `src/components/*.vue`, `src/views/*.vue` |
 | Theme-Driven Styling | CSS custom properties per theme; `theme-<name>` class on `<html>` | `src/scss/*.scss`, `src/state.ts` |
-| Tailwind + PrimeVue | Utility classes via Tailwind, component library via PrimeVue (Aura preset) | `src/styles/snowind.css`, `src/main.ts` |
+| Tailwind CSS v4 | Utility classes via Tailwind with custom semantic color system | `src/styles/snowind.css`, `src/styles/global.css` |
 | Router-Based Navigation | vue-router with dynamic imports for code splitting | `src/router.ts` |
 | State via Composition | Reactive state in composables and `@snowind/state` | `src/state.ts`, `src/services/*.ts` |
 | Slot-Based Layout | `TheHeader` composes `TheHeaderMain` with named slots | `src/components/TheHeader.vue`, `TheHeaderMain.vue` |
@@ -31,10 +31,11 @@
 └──────┬──────┘    └──────────────┘    └──────────────────┘
        │
        ▼
-┌─────────────┐    ┌──────────────────┐    ┌──────────────────┐
-│  PrimeVue   │◀───│ Tailwind CSS v4  │◀───│   Vite           │
-│ (UI Library)│    │  + PrimeUI       │    │ (Build Tool)     │
-└─────────────┘    └──────────────────┘    └──────────────────┘
+┌──────────────────┐    ┌──────────────────┐
+│ Tailwind CSS v4  │◀───│   Vite           │
+│  + Semantic      │    │ (Build Tool)     │
+│   Colors         │    │                  │
+└──────────────────┘    └──────────────────┘
        │
        ▼
 ┌──────────────────────────────────────────────────────────┐
@@ -50,7 +51,7 @@
 └──────────────────────────────────────────────────────────┘
 ```
 
-**Prose**: Vite builds the project using Vue and Tailwind plugins. Vue 3 is the core framework with vue-router for navigation. PrimeVue provides UI components and services (Toast, ConfirmDialog). `@snowind/state` provides shared composables (`User`, `useScreenSize`). Themes are SCSS files that override CSS custom properties on `.theme-*` classes applied to `<html>`. AI streaming uses `@agent-smith/server` and `markstream-vue` for real-time markdown rendering.
+**Prose**: Vite builds the project using Vue and Tailwind plugins. Vue 3 is the core framework with vue-router for navigation. `@snowind/state` provides shared composables (`User`, `useScreenSize`). Themes are SCSS files that override CSS custom properties on `.theme-*` classes applied to `<html>`. AI streaming uses `@agent-smith/server` and `markstream-vue` for real-time markdown rendering.
 
 ## 4. Packages/Modules
 
@@ -69,8 +70,8 @@
 
 ### `services/` — Business logic & utilities
 - **Purpose**: Standalone composables and services
-- **Key files**: `mobile_menu.ts`, `notify.ts`, `inference.ts`
-- **Key types/classes**: `useMobileMenu(router?, autoclose?)` → `{isVisible, forceCloseMenu, closeMenu, toggleMenu, hideMenu, link}`; `msg` → `{info(), success(), warn(), error()}`; `initNotifyService()`; `confirmSuccess()`, `confirmDanger()`; AI streaming hooks (`onTurnStart`, `onToken`, `onThinkingToken`)
+- **Key files**: `mobile_menu.ts`, `inference.ts`
+- **Key types/classes**: `useMobileMenu(router?, autoclose?)` → `{isVisible, forceCloseMenu, closeMenu, toggleMenu, hideMenu, link}`; AI streaming hooks (`onTurnStart`, `onToken`, `onThinkingToken`)
 
 ### `widgets/icons/` — Icon SVG components
 - **Purpose**: Inline SVG icon components
@@ -101,7 +102,6 @@
 |--------|----------|---------|-------------|
 | `@vitejs/plugin-vue` | Build | Vue SFC compilation | `vite.config.mts` |
 | `@tailwindcss/vite` | Styling | Tailwind CSS v4 integration | `vite.config.mts` |
-| PrimeVue (Aura theme) | UI Library | Component library & services | `src/main.ts` |
 
 ## 7. UI/Frontend
 
@@ -144,14 +144,16 @@
 ### Layout Structure (App.vue)
 ```
 <div class="h-full min-h-svh w-full">
-  <the-header fixed top-0>          <!-- 4rem fixed header -->
-  <the-mobile-menu fixed top-16>    <!-- Mobile slide menu -->
-  <div class="main-h overflow-y-auto">  <!-- Scrollable content area -->
-    <router-view />                 <!-- Page content -->
-    <the-footer />                  <!-- Footer -->
+  <the-header class="h-16 prim fixed"></the-header>
+  <the-mobile-menu class="top-16 fixed lighter z-50">
+    <div class="p-3">Menu</div>
+  </the-mobile-menu>
+  <div class="w-full top-16 fixed overflow-y-auto z-10 main-h">
+    <div class="background flex flex-col w-full h-full">
+      <router-view class="container mx-auto grow"></router-view>
+      <the-footer></the-footer>
+    </div>
   </div>
-  <Toast />                         <!-- PrimeVue toast -->
-  <ConfirmDialog />                 <!-- PrimeVue confirmation dialog -->
 </div>
 ```
 
@@ -172,23 +174,6 @@ function setTheme(t?: string) {
     document.querySelector('html')?.classList.remove(`theme-${currentTheme}`);
     document.querySelector('html')?.classList.add(`theme-${store.value.theme}`);
 }
-```
-
-### Toast Notifications
-```ts
-// src/services/notify.ts
-import { msg } from '@/services/notify';
-msg.info("Title", "Body");       // Info toast
-msg.success("Title", "Body");   // Success toast
-msg.warn("Title", "Body");      // Warning toast
-msg.error("Title", "Body");     // Error toast
-```
-
-### Confirmation Dialogs
-```ts
-import { confirmSuccess, confirmDanger } from '@/services/notify';
-confirmSuccess("Delete?", "Are you sure?", async () => { /* accept */ });
-confirmDanger("Delete?", "This cannot be undone.", async () => { /* accept */ });
 ```
 
 ### Mobile Menu Composable
@@ -216,7 +201,6 @@ import { stream, nodes, srv } from '@/services/inference';
 | Add a new page | `src/router.ts` + `src/views/` |
 | Change theme colors | `src/scss/<theme>.scss` |
 | Modify header layout | `src/components/TheHeader.vue`, `TheHeaderMain.vue` |
-| Add notification | `src/services/notify.ts` → use `msg.*()` or `confirm*()` |
 | Add mobile menu item | `src/components/TheHeader.vue` (mobile-menu slot) |
 | Toggle dark/light mode | `src/state.ts` → `user.toggleDarkMode()` |
 | Change default theme | `src/state.ts` → `store.value.theme` initial value |

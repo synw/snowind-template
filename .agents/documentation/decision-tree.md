@@ -16,7 +16,6 @@
 | Routing | `src/router.ts` + `.agents/documentation/codebase-summary.md` |
 | State management | `src/state.ts` + `.agents/documentation/codebase-summary.md` |
 | Theme switching | `src/scss/` + `.agents/documentation/codebase-summary.md` |
-| Toast notifications | `src/services/notify.ts` + `.agents/documentation/codebase-summary.md` |
 | Mobile menu | `src/services/mobile_menu.ts` + `.agents/documentation/codebase-summary.md` |
 | AI inference/streaming | `src/services/inference.ts` + `.agents/documentation/codebase-summary.md` |
 
@@ -43,7 +42,6 @@
 | Add a new page | `src/router.ts` + `src/views/` |
 | Change theme colors | `src/scss/<theme>.scss` |
 | Modify header layout | `src/components/TheHeader.vue`, `TheHeaderMain.vue` |
-| Add notification | `src/services/notify.ts` → use `msg.*()` or `confirm*()` |
 | Add mobile menu item | `src/components/TheHeader.vue` (mobile-menu slot) |
 | Toggle dark/light mode | `src/state.ts` → `user.toggleDarkMode()` |
 | Change default theme | `src/state.ts` → `store.value.theme` initial value |
