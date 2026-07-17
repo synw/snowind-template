@@ -45,7 +45,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import TheHeaderMain from './TheHeaderMain.vue';
-import { user } from "@/state";
+import { user } from "@/state.js";
 import { computed } from 'vue';
 import BackIcon from '../widgets/icons/BackIcon.vue';
 import MoonIcon from '../widgets/icons/MoonIcon.vue';

@@ -5,7 +5,7 @@
 </template>
 <script setup lang="ts">
 import { computed } from 'vue';
-import { mobileMenu } from '../state';
+import { mobileMenu } from '../state.js';
 
 const css = computed<Record<string, boolean>>(() => {
     const cl: Record<string, boolean> = {
