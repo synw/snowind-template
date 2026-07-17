@@ -1,13 +1,13 @@
 # Snowind Template
 
 ## Mission
-A Vue 3 + TypeScript starter template with multi-theme support, Tailwind CSS v4, PrimeVue UI components, and a mobile-responsive layout.
+A Vue 3 + TypeScript starter template with multi-theme support, Tailwind CSS v4, and a mobile-responsive layout.
 
 ## Repositories
 
 | Repo | Path | Purpose |
 |------|------|---------|
-| snowind-template | `/` | Vue 3 + TypeScript SPA starter with Tailwind CSS & PrimeVue theming |
+| snowind-template | `/` | Vue 3 + TypeScript SPA starter with Tailwind CSS theming |
 
 ## Conventions (for AI Agents)
 
