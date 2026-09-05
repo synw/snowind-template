@@ -10,7 +10,8 @@ const themes = new Array<string>(
     "sandstone",
     "cloud",
     "graphite",
-    "airy-soft"
+    "airy-soft",
+    "stone"
 );
 
 export {
