@@ -50,4 +50,5 @@ _N/A — This is the root project._
 - `.agents/documentation/project-overview.md` — Concise project overview
 - `.agents/documentation/project-nav.md` — Detailed navigation map
 - `.agents/documentation/colors.md` — Tailwind semantic colors cheat sheet
+- `.agents/documentation/css-system-guide.md` — CSS system guide (theming architecture, dark mode, adding new colors/themes)
 - `AGENTS.md` — Project conventions and quick start

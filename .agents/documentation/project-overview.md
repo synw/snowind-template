@@ -3,6 +3,7 @@
 > **Role**: Concise "what is this" for context loading (~1 page overview).
 > **See also**: `.agents/documentation/decision-tree.md` to find the right doc for your task.
 > **See also**: `.agents/documentation/colors.md` for Tailwind semantic colors cheat sheet.
+> **See also**: `.agents/documentation/css-system-guide.md` for how the CSS/theming system works and how to extend it.
 > **See also**: `.agents/documentation/project-nav.md` for detailed navigation and task references.
 
 ---
@@ -45,6 +46,7 @@ A Vue 3 + TypeScript single-page application starter template for [Snowind](http
 |------|-------|
 | Add a new page | `src/router.ts` + `src/views/` |
 | Change theme colors | `src/scss/<theme>.scss` |
+| Add new theme or semantic color (how-to) | `.agents/documentation/css-system-guide.md` (§5 / §6) |
 | Modify header layout | `src/components/TheHeader.vue`, `TheHeaderMain.vue` |
 | Add mobile menu item | `src/components/TheHeader.vue` (mobile-menu slot) |
 | Toggle dark/light mode | `src/state.ts` → `user.toggleDarkMode()` |
@@ -92,3 +94,4 @@ mobileMenu.link('/path'); // Navigate and close
 | Git Ignore | `/.gitignore` |
 | License | `/LICENSE` |
 | Tailwind Semantic Colors | `.agents/documentation/colors.md` |
+| CSS System Guide | `.agents/documentation/css-system-guide.md` |

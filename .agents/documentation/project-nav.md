@@ -200,6 +200,7 @@ import { stream, nodes, srv } from '@/services/inference';
 |------|-------|
 | Add a new page | `src/router.ts` + `src/views/` |
 | Change theme colors | `src/scss/<theme>.scss` |
+| Add new theme or semantic color (how-to) | `.agents/documentation/css-system-guide.md` (§5 / §6) |
 | Modify header layout | `src/components/TheHeader.vue`, `TheHeaderMain.vue` |
 | Add mobile menu item | `src/components/TheHeader.vue` (mobile-menu slot) |
 | Toggle dark/light mode | `src/state.ts` → `user.toggleDarkMode()` |
@@ -217,6 +218,7 @@ import { stream, nodes, srv } from '@/services/inference';
 - **TypeScript Config**: `/tsconfig.json`
 - **Git Ignore**: `/.gitignore`
 - **License**: `/LICENSE`
+- **CSS System Guide**: `.agents/documentation/css-system-guide.md` (Tailwind v4 + semantic colors internals, theming & dark mode patterns, extending with new colors/themes)
 
 ## 12. Key Conventions & Patterns
 
@@ -240,5 +242,6 @@ import { stream, nodes, srv } from '@/services/inference';
 - **Usage**: `text-[color]`, `bg-[color]`, or bare `[color]` for combined text+background
 - **Themes**: 12 SCSS files in `src/scss/` define CSS custom properties per theme
 - **Default Colors**: Defined in `src/scss/default.scss`
+- **CSS System Guide**: `.agents/documentation/css-system-guide.md` — how the stack works (config-free Tailwind v4, plugin internals, `--{color}-{mode}-bg/txt` variable pattern) and how to extend it (new colors §5, new themes §6)
 
-→ **Read `.agents/documentation/colors.md`** for the full Tailwind semantic colors cheat sheet before using color classes.
+→ **Read `.agents/documentation/colors.md`** for the full cheat sheet before using color classes, and **`.agents/documentation/css-system-guide.md`** when adding new colors/themes or debugging theming.

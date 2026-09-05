@@ -23,6 +23,9 @@
 
 → Read `.agents/documentation/colors.md` for the full cheat sheet (prim, sec, ter, success, warning, danger, info, background, light variants)
 
+- How the color/theming system works (plugin internals, variable pattern, dark mode) → `.agents/documentation/css-system-guide.md`
+- Add a new semantic color or a new theme → `.agents/documentation/css-system-guide.md` (§5 / §6)
+
 ## I need to add a new page
 
 → Add route in `src/router.ts`, create component in `src/views/`
@@ -41,6 +44,7 @@
 |------|-------|
 | Add a new page | `src/router.ts` + `src/views/` |
 | Change theme colors | `src/scss/<theme>.scss` |
+| Add new theme or semantic color (how-to) | `.agents/documentation/css-system-guide.md` (§5 / §6) |
 | Modify header layout | `src/components/TheHeader.vue`, `TheHeaderMain.vue` |
 | Add mobile menu item | `src/components/TheHeader.vue` (mobile-menu slot) |
 | Toggle dark/light mode | `src/state.ts` → `user.toggleDarkMode()` |

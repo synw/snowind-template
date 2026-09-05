@@ -22,8 +22,9 @@ A Vue 3 + TypeScript starter template with multi-theme support, Tailwind CSS v4,
 1. Read `.agents/documentation/decision-tree.md` to find the right doc for your task
 2. Read `.agents/documentation/project-overview.md` for high-level context
 3. Read `.agents/documentation/colors.md` for Tailwind semantic color cheat sheet
-4. Read `.agents/documentation/project-nav.md` for detailed navigation and dependency graph
-5. Navigate to the relevant repo/package and read its `.agents/documentation/codebase-summary.md`
+4. Read `.agents/documentation/css-system-guide.md` for how the CSS/theming system works and how to extend it
+5. Read `.agents/documentation/project-nav.md` for detailed navigation and dependency graph
+6. Navigate to the relevant repo/package and read its `.agents/documentation/codebase-summary.md`
 
 ## Documentation
 
@@ -32,6 +33,7 @@ A Vue 3 + TypeScript starter template with multi-theme support, Tailwind CSS v4,
 - `.agents/documentation/project-overview.md` — Concise project overview (~1 page)
 - `.agents/documentation/project-nav.md` — Detailed navigation map with dependency graph
 - `.agents/documentation/colors.md` — Tailwind semantic colors cheat sheet (prim, sec, ter, success, warning, danger, info, etc.)
+- `.agents/documentation/css-system-guide.md` — CSS system guide: Tailwind v4 + semantic-colors plugin internals, theming & dark mode patterns, how to add new colors/themes
 - `src/` — Application source root (see codebase-summary.md for module breakdown)
 
 Each package or library directory has `.agents/documentation/codebase-summary.md`. Use them to navigate in the codebase easily.

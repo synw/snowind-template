@@ -36,4 +36,4 @@ Examples:
 ```
 </cheatset>
 
-The default color classes can be found in `example/src/scss/default.scss`
+The default color classes can be found in `src/scss/default.scss`
