@@ -18,6 +18,7 @@
 | Theme switching | `src/scss/` + `.agents/documentation/codebase-summary.md` |
 | Mobile menu | `src/services/mobile_menu.ts` + `.agents/documentation/codebase-summary.md` |
 | AI inference/streaming | `src/services/inference.ts` + `.agents/documentation/codebase-summary.md` |
+| UI component kit (`Sw-*`) | `src/vibe/components/` + `.agents/documentation/codebase-summary.md` |
 
 ## I need to use Tailwind semantic colors
 

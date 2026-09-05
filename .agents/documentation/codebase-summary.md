@@ -33,6 +33,25 @@ _N/A — This is the root project._
 | `vite.config.mts` | Build config: Vue plugin, Tailwind plugin, path alias `@/` → `/src/` |
 | `tsconfig.json` | TypeScript config: ESNext target, NodeNext module resolution, strict mode |
 
+### `src/vibe/` — UI Component Kit (design system)
+- **Entry Point**: `widgets/StyleGuide.vue` (design-system demo); components used via local `<script setup>` imports
+- **Key Files**:
+  | File | Purpose |
+  |------|---------|
+  | `components/inputtext/SwInputText.vue` | Text input (`v-model`) |
+  | `components/inputnumber/SwInputNumber.vue` | Number input with step controls |
+  | `components/textarea/SwTextarea.vue` | Multi-line text input (`v-model`) |
+  | `components/switch/SwSwitch.vue` | Toggle switch |
+  | `components/popover/SwPopover.vue` | Popover overlay (emits `hide`) |
+  | `components/tooltip/SwTooltip.vue` | Tooltip from `text` prop, wraps default slot |
+  | `components/tree/SwTree.vue` | Tree view with per-node slot |
+  | `components/listbox/SwListbox.vue` | Selectable listbox |
+  | `components/iftalabel/SwIftaLabel.vue` | Label wrapper, wraps default slot |
+  | `components/toast/{SwToast,SwToastItem}.vue + composable.ts` | Toast notifications; global `toast.success()/warn()/error()` API |
+  | `components/notification/{SwNotification,SwNotificationItem}.vue + composable.ts` | Notification center; `addNotification/removeNotification`, `notifications` ref |
+  | `widgets/StyleGuide.vue` | Design-system style guide (colors, buttons, forms, cards, alerts) |
+- **Pattern**: `<script setup lang="ts">`; `v-model` via `modelValue` prop + `update:modelValue` emit; default/named slots; toast/notification use module-level composables for global state. Styled with Tailwind semantic color classes (`prim`, `sec`, `ter`, `success`, etc.).
+
 ## Architecture
 - **Layout Shell**: App.vue wraps content in fixed header (4rem), mobile menu overlay, scrollable main area, and footer
 - **Theme System**: 12 SCSS theme files define CSS custom properties; `theme-<name>` class on `<html>` switches themes
@@ -44,6 +63,7 @@ _N/A — This is the root project._
 - See `src/views/` — Page-level components (home, page, styleguide)
 - See `src/services/` — Business logic composables (mobile_menu, inference)
 - See `src/scss/` — 12 theme SCSS files + main.scss aggregator
+- See `src/vibe/` — New UI component kit / design system (11 `Sw-*` components + StyleGuide widget); see module section above
 
 ## Documentation
 - `.agents/documentation/decision-tree.md` — Quick guide: find the right doc for your task

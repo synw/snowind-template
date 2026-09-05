@@ -64,6 +64,11 @@
 - **Key files**: `TheHeader.vue`, `TheFooter.vue`, `TheMobileMenu.vue`, `TheHeaderMain.vue`, `ThemeSwitcher.vue`, `HelloWorld.vue`, `EditAiComponent.vue`
 - **Key types/classes**: None (all Vue SFCs)
 
+### `vibe/` — UI Component Kit (design system)
+- **Purpose**: Reusable `Sw-*` component library + design-system StyleGuide, built on the Tailwind semantic color system
+- **Key files**: `components/inputtext/SwInputText.vue`, `components/inputnumber/SwInputNumber.vue`, `components/textarea/SwTextarea.vue`, `components/switch/SwSwitch.vue`, `components/popover/SwPopover.vue`, `components/tooltip/SwTooltip.vue`, `components/tree/SwTree.vue`, `components/listbox/SwListbox.vue`, `components/iftalabel/SwIftaLabel.vue`, `components/toast/{SwToast,SwToastItem,composable}.ts`, `components/notification/{SwNotification,SwNotificationItem,composable}.ts`, `widgets/StyleGuide.vue`
+- **Pattern**: `<script setup lang="ts">`; `v-model` via `modelValue` + `update:modelValue`; default/named slots; toast/notification use module-level composables for global state (`toast.success()/warn()/error()`, `addNotification/removeNotification`).
+
 ### `views/` — Page-level components
 - **Purpose**: Route-matched page views
 - **Key files**: `HomeView.vue`, `PageView.vue`, `StyleGuideView.vue`
@@ -124,6 +129,7 @@
 | `ThemeSwitcher` | Theme dropdown selector | N/A | `TheHeader` |
 | `HelloWorld` | Demo counter component | `msg: String` | `PageView.vue` |
 | `EditAiComponent` | AI streaming editor | N/A | `StyleGuideView.vue` |
+| `Sw-*` (vibe kit) | Form & feedback components (input, number, textarea, switch, popover, tooltip, tree, listbox, ifta-label, toast, notification) | `modelValue`/slots; composable APIs (`toast`, `addNotification`) | `src/vibe/components/` |
 
 ### Themes (12 total)
 
@@ -209,6 +215,7 @@ import { stream, nodes, srv } from '@/services/inference';
 | Add new icon | `src/widgets/icons/` |
 | View style guide demo | Navigate to `/styleguide` in dev mode |
 | Add AI streaming component | `src/services/inference.ts` + `src/components/EditAiComponent.vue` |
+| Browse the UI component kit / design system | `src/vibe/components/` (StyleGuide demo at `src/vibe/widgets/StyleGuide.vue`) |
 
 ## 11. Documentation Links
 
