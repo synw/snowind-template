@@ -2,7 +2,7 @@
 
 A ready-to-use [Vue 3](https://vuejs.org/) + [Tailwind CSS v4](https://tailwindcss.com/) template with multi-theme support and AI inference streaming. Part of the [Snowind](https://github.com/synw/snowind) project.
 
-[![License](https://img.shields.io/github/license/synw/snowind-template)](LICENSE)
+![Landing Page](docs/landing-page.png)
 
 ## Features
 
