@@ -102,7 +102,7 @@ import { setTheme } from "@/state.js";
 setTheme("forest"); // swaps the <html> class and recolors everything
 ```
 
-Twelve themes are available (defined in [`src/conf.ts`](src/conf.ts)): `black`, `navy`, `forest`, `slate`, `royal`, `teal`, `pearl`, `sandstone`, `cloud`, `graphite` (default), and `airy-soft`.
+Twelve themes are available (defined in [`src/conf.ts`](src/conf.ts)): `black`, `navy`, `forest`, `slate`, `royal`, `teal`, `pearl`, `sandstone`, `cloud`, `graphite` (default), `airy-soft`, and `stone`.
 
 ## Theming
 
