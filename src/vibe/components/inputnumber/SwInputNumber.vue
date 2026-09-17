@@ -1,15 +1,16 @@
 <template>
     <div :class="wrapperClass">
-        <input type="text" inputmode="decimal" role="spinbutton" autocomplete="off"
-            :id="inputId" :value="text"
-            class="h-full w-full min-w-0 bg-transparent outline-none" :class="sizes[size].input"
-            :aria-valuemin="min" :aria-valuemax="max" :aria-valuenow="modelValue"
-            @input="onInput" @focus="focused = true" @blur="commit" @keydown="onKeydown" />
+        <input type="text" inputmode="decimal" role="spinbutton" autocomplete="off" :id="inputId" :value="text"
+            class="h-full w-full min-w-0 bg-transparent outline-none" :class="sizes[size].input" :aria-valuemin="min"
+            :aria-valuemax="max" :aria-valuenow="modelValue!" @input="onInput" @focus="focused = true" @blur="commit"
+            @keydown="onKeydown" />
         <div v-if="showButtons" :class="buttonsClass">
             <button type="button" aria-label="Increment"
-                class="flex flex-1 cursor-pointer select-none items-center justify-center text-[10px] font-bold leading-none text-on-lighter hover:bg-semilight" @click="nudge(1)">+</button>
+                class="flex flex-1 cursor-pointer select-none items-center justify-center text-[10px] font-bold leading-none text-on-lighter hover:bg-semilight"
+                @click="nudge(1)">+</button>
             <button type="button" aria-label="Decrement"
-                class="flex flex-1 cursor-pointer select-none items-center justify-center text-[10px] font-bold leading-none text-on-lighter hover:bg-semilight" @click="nudge(-1)">-</button>
+                class="flex flex-1 cursor-pointer select-none items-center justify-center text-[10px] font-bold leading-none text-on-lighter hover:bg-semilight"
+                @click="nudge(-1)">-</button>
         </div>
     </div>
 </template>
@@ -40,11 +41,11 @@ const props = withDefaults(defineProps<{
     fluid: false,
 });
 
-// Only finite numbers are ever emitted (commit/nudge always clamp+snap), so the
-// v-model write side stays assignable to `number | undefined` targets.
+// Emits are `number | null`: only finite numbers are ever emitted for real values
+// (commit/nudge always clamp+snap), and an empty field commits as `null`.
 const emit = defineEmits<{
-    'update:modelValue': [value: number];
-    valueChange: [value: number];
+    'update:modelValue': [value: number | null];
+    valueChange: [value: number | null];
 }>();
 
 // Full literal class names are required so Tailwind's static scanner generates the utilities.
@@ -90,7 +91,7 @@ function clamp(value: number): number {
     return Math.min(props.max ?? Infinity, Math.max(props.min ?? -Infinity, value));
 }
 
-function setModel(value: number) {
+function setModel(value: number | null) {
     emit('update:modelValue', value);
     emit('valueChange', value);
 }
@@ -99,12 +100,17 @@ function onInput(event: Event) {
     text.value = (event.target as HTMLInputElement).value;
 }
 
-// Commit what was typed; empty or invalid input reverts to the model value.
+// Commit what was typed; an empty field clears the model (emits null),
+// invalid input reverts to the model value.
 function commit() {
     focused.value = false;
     const raw = text.value.trim();
+    if (raw === '') {
+        setModel(null);
+        return;
+    }
     const parsed = Number(raw);
-    if (raw === '' || !isFinite(parsed)) {
+    if (!isFinite(parsed)) {
         text.value = format(props.modelValue);
         return;
     }
