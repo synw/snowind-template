@@ -18,7 +18,7 @@
     <SwNotification />
     <div class="w-full top-16 fixed overflow-y-auto z-10 main-h">
       <div class="background flex flex-col w-full h-full">
-        <router-view class="container mx-auto grow"></router-view>
+        <router-view class="w-full grow"></router-view>
         <the-footer></the-footer>
       </div>
     </div>

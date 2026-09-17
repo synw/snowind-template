@@ -1,6 +1,9 @@
 <template>
   <div class="mb-24">
 
+    <!-- Hero section (full-bleed) -->
+    <HeroSection />
+
     <!-- Feature cards -->
     <section class="px-4 max-w-5xl mx-auto mt-10">
       <h2 class="text-2xl font-bold mb-2 border-b border-lighter pb-2">Explore the template</h2>
@@ -48,6 +51,7 @@
 <script setup lang="ts">
 import { setTheme, store } from '../state.js';
 import { themes } from '../conf.js';
+import HeroSection from '@/components/HeroSection.vue';
 
 function applyTheme(theme: string) {
   setTheme(theme);
