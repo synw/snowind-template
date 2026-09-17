@@ -90,7 +90,7 @@ Components follow the `<script setup lang="ts">` convention and are styled with 
 
 - **Layout components** live in [`src/components/`](src/components/) (header, footer, theme switcher, icons).
 - **Page-level views** live in [`src/views/`](src/views/).
-- The reusable `Sw-*` design-system kit lives in [`src/vibe/`](src/vibe/).
+- The reusable `Sw-*` design-system kit lives in [`src/vibe/`](src/vibe/) — see the **Design System Kit** section below for a full component summary.
 
 ### Using the theme switcher
 
@@ -103,6 +103,70 @@ setTheme("forest"); // swaps the <html> class and recolors everything
 ```
 
 Twelve themes are available (defined in [`src/conf.ts`](src/conf.ts)): `black`, `navy`, `forest`, `slate`, `royal`, `teal`, `pearl`, `sandstone`, `cloud`, `graphite` (default), `airy-soft`, and `stone`.
+
+## Design System Kit components
+
+The reusable design-system kit lives in [`src/vibe/`](src/vibe/). Every component uses `<script setup lang="ts">`, is styled with Tailwind semantic-color classes, and automatically recolors to match the active theme. Live, interactive demos of all components are available at `/components` ([`src/views/ComponentsView.vue`](src/views/ComponentsView.vue)).
+
+### Available components
+
+All paths below are relative to [`src/vibe/components/`](src/vibe/components/).
+
+| Component | Path | Purpose | Key API |
+|-----------|------|---------|---------|
+| `SwInputText` | `inputtext/SwInputText.vue` | Single-line text input | `v-model` (string) |
+| `SwInputNumber` | `inputnumber/SwInputNumber.vue` | Number field with optional +/- stepper buttons; clamps to `min`/`max` and snaps to `step`; ArrowUp/ArrowDown nudge, Enter commits, Escape reverts | `v-model` (`number \| null`, empty field emits `null`), `min`, `max`, `step`, `showButtons`, `buttonLayout` (`'vertical' \| 'horizontal'`), `size` (`'small' \| 'medium' \| 'large'`), `fluid`; also emits `valueChange` |
+| `SwTextarea` | `textarea/SwTextarea.vue` | Multi-line input with optional auto-grow (no scrollbar) | `v-model` (string), `rows`, `autoResize` |
+| `SwSwitch` | `switch/SwSwitch.vue` | Accessible toggle switch (`role="switch"`); default slot renders the label | `v-model` (boolean), `big`, `color` (any semantic color, default `success`) |
+| `SwPopover` | `popover/SwPopover.vue` | Teleported overlay panel positioned below its trigger; flips above when near the viewport edge; closes on outside click or Escape | No props — call `show()` / `hide()` / `toggle()` via a template ref (exposed); emits `hide`; default slot holds the panel content |
+| `SwTooltip` | `tooltip/SwTooltip.vue` | Lightweight hover/focus tooltip, no JS positioning | `text` (string), wraps its trigger in the default slot |
+| `SwTree` | `tree/SwTree.vue` | Tree view with optional search filter (matched branches auto-expand), expand/collapse, single or multiple selection; scoped slot for custom node rendering (`#default="{ node }"`) | `nodes: SwTreeNode[]` (`{ key, label, children? }`), `filter`, `selectionMode` (`'single' \| 'multiple'`), `v-model:expandedKeys`; emits `nodeSelect(node)` |
+| `SwListbox` | `listbox/SwListbox.vue` | Selectable listbox with optional filter input, full keyboard navigation (arrow keys, Home/End, Enter/Space) and roving tabindex; selecting the current option clears it | `options` (strings or objects), `v-model`, `optionLabel` (default `'label'`), `filter`, `focused` (auto-focus when visible) |
+| `SwIftaLabel` | `iftalabel/SwIftaLabel.vue` | Floating label overlay for form controls | `label` (string), optional `labelFor`; wraps the control in the default slot |
+| `SwToast` / `SwToastItem` | `toast/` | Toast notification stack with auto-dismiss (1.5 s default) | Global composable: `toast.success(msg)`, `toast.warning(msg)`, `toast.error(msg)`, `toast.info(msg)`; `toasts` ref + `remove(id)` |
+| `SwNotification` / `SwNotificationItem` | `notification/` | Notification center with severity levels (`info`, `success`, `warn`, `error`) and per-item lifetime | Global composable: `addNotification({ severity, title, detail?, life })`, `removeNotification(id)`, `notifications` ref |
+| `SwConfirmDialog` | `confirm/` | Modal confirmation dialog driven by a composable (Promise-based accept/reject) | `requireConfirmation({ title, message, accept, reject? })`, `closeConfirmation()`, `confirmation` ref |
+
+### Quick usage
+
+Import components directly from their files with the `@/` alias:
+
+```vue
+<script setup lang="ts">
+import { ref } from "vue";
+import SwInputText from "@/vibe/components/inputtext/SwInputText.vue";
+import SwSwitch from "@/vibe/components/switch/SwSwitch.vue";
+import { toast } from "@/vibe/components/toast/composable.js";
+
+const name = ref("");
+const enabled = ref(false);
+</script>
+
+<template>
+  <SwInputText v-model="name" />
+  <SwSwitch v-model="enabled">Enable feature</SwSwitch>
+  <button @click="toast.success('Saved!')">Save</button>
+</template>
+```
+
+### Mounting the global hosts
+
+The app-level components are already wired up in [`src/App.vue`](src/App.vue):
+
+- `<SwToast :toasts="toasts" />` — renders toasts for the global `toast.*()` API
+- `<SwNotification />` — renders the notification center fed by `addNotification()`
+
+`SwConfirmDialog` is not mounted globally — mount it once where you use confirmations (see how [`src/views/ComponentsView.vue`](src/views/ComponentsView.vue) does it), then trigger dialogs with `requireConfirmation()`:
+
+```ts
+import { requireConfirmation } from "@/vibe/components/confirm/composable.js";
+
+await requireConfirmation({
+  title: "Delete item?",
+  message: "This action cannot be undone.",
+  accept: async () => { /* perform the delete */ },
+});
+```
 
 ## Theming
 
