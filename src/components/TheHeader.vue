@@ -17,8 +17,7 @@
         </template>
         <template #menu>
             <div class="flex flex-row items-center justify-end w-full h-full space-x-1">
-                <button class="border-none btn hover:light" @click="router.push('/page')">Page 1</button>
-                <button class="border-none btn" @click="router.push('/styleguide')">Style guide</button>
+                <slot name="menu"></slot>
                 <theme-switcher class="mr-5 text-sm" />
                 <div class="pr-5 text-lg cursor-pointer txt-lighter dark:txt-light" @click="user.toggleDarkMode()">
                     <moon-icon v-if="!user.isDarkMode.value" height="24" width="24"></moon-icon>

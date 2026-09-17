@@ -19,8 +19,15 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
+    path: "/components",
+    component: () => import("./views/ComponentsView.vue"),
+    meta: {
+      title: "Components"
+    }
+  },
+  {
     path: "/styleguide",
-    component: () => import("./views/StyleGuideView.vue"),
+    component: () => import("@/vibe/widgets/StyleGuide.vue"),
     meta: {
       title: "Styleguide"
     }
