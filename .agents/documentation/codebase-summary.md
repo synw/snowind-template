@@ -4,9 +4,9 @@
 Vue 3 + TypeScript SPA starter template with multi-theme support, Tailwind CSS v4, and AI inference streaming.
 
 ## Dependencies
-- `vue` (3.5.39) — Core framework
-- `vue-router` (5.1.0) — Client-side routing
-- `tailwindcss` (4.3.2) + `@tailwindcss/vite` — Utility CSS framework
+- `vue` (3.5.40) — Core framework
+- `vue-router` (5.2.0) — Client-side routing
+- `tailwindcss` (4.3.3) + `@tailwindcss/vite` — Utility CSS framework
 - `@snowind/state` — Shared composables (User, useScreenSize)
 - `@vueuse/core` — Vue composition utilities (useStorage)
 - `@agent-smith/server` + `@agent-smith/wscli` — AI inference server/client
@@ -19,6 +19,7 @@ _N/A — This is the root project._
 ## Entry Point
 - `src/main.ts` — Vue app initialization and router mount
 - `src/App.vue` — Root component with layout shell (header, mobile menu, router-view, footer)
+- `src/bin/index.ts` — Server entry point: runs @agent-smith/server on port 5185
 - `vite.config.mts` — Vite build configuration with Vue and Tailwind plugins
 
 ## Key Files
@@ -29,7 +30,9 @@ _N/A — This is the root project._
 | `src/router.ts` | Route definitions: `/` (HomeView), `/page` (PageView), `/styleguide` (StyleGuideView) |
 | `src/state.ts` | State management: theme store, User composable, mobile menu composable, theme switching |
 | `src/conf.ts` | Theme list: array of 12 available theme names |
-| `src/server.ts` | AI server entry point: runs @agent-smith/server |
+| `src/services/str.ts` | String utilities: humanize, humanizeNumber, formatDuration |
+| `src/utils.ts` | General utility functions |
+| `src/bin/index.ts` | Server entry point: runs @agent-smith/server on port 5185 |
 | `vite.config.mts` | Build config: Vue plugin, Tailwind plugin, path alias `@/` → `/src/` |
 | `tsconfig.json` | TypeScript config: ESNext target, NodeNext module resolution, strict mode |
 
@@ -49,6 +52,7 @@ _N/A — This is the root project._
   | `components/iftalabel/SwIftaLabel.vue` | Label wrapper, wraps default slot |
   | `components/toast/{SwToast,SwToastItem}.vue + composable.ts` | Toast notifications; global `toast.success()/warn()/error()` API |
   | `components/notification/{SwNotification,SwNotificationItem}.vue + composable.ts` | Notification center; `addNotification/removeNotification`, `notifications` ref |
+  | `components/confirm/{SwConfirmDialog.vue, composable.ts}` | Confirmation dialog; `requireConfirmation()/closeConfirmation()` composable API |
   | `widgets/StyleGuide.vue` | Design-system style guide (colors, buttons, forms, cards, alerts) |
 - **Pattern**: `<script setup lang="ts">`; `v-model` via `modelValue` prop + `update:modelValue` emit; default/named slots; toast/notification use module-level composables for global state. Styled with Tailwind semantic color classes (`prim`, `sec`, `ter`, `success`, etc.).
 
@@ -63,7 +67,7 @@ _N/A — This is the root project._
 - See `src/views/` — Page-level components (home, page, styleguide)
 - See `src/services/` — Business logic composables (mobile_menu, inference)
 - See `src/scss/` — 12 theme SCSS files + main.scss aggregator
-- See `src/vibe/` — New UI component kit / design system (11 `Sw-*` components + StyleGuide widget); see module section above
+- See `src/vibe/` — New UI component kit / design system (12 `Sw-*` components + StyleGuide widget); see module section above
 
 ## Documentation
 - `.agents/documentation/decision-tree.md` — Quick guide: find the right doc for your task

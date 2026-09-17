@@ -41,7 +41,8 @@
 ┌──────────────────────────────────────────────────────────┐
 │                  SCSS Themes (12)                        │
 │   black, navy, forest, slate, royal, teal, pearl,        │
-│   sandstone, cloud, graphite (default), airy-soft        │
+│   sandstone, cloud, graphite (default), airy-soft,       │
+│   stone                                                  │
 └──────────────────────────────────────────────────────────┘
        │
        ▼
@@ -66,7 +67,7 @@
 
 ### `vibe/` — UI Component Kit (design system)
 - **Purpose**: Reusable `Sw-*` component library + design-system StyleGuide, built on the Tailwind semantic color system
-- **Key files**: `components/inputtext/SwInputText.vue`, `components/inputnumber/SwInputNumber.vue`, `components/textarea/SwTextarea.vue`, `components/switch/SwSwitch.vue`, `components/popover/SwPopover.vue`, `components/tooltip/SwTooltip.vue`, `components/tree/SwTree.vue`, `components/listbox/SwListbox.vue`, `components/iftalabel/SwIftaLabel.vue`, `components/toast/{SwToast,SwToastItem,composable}.ts`, `components/notification/{SwNotification,SwNotificationItem,composable}.ts`, `widgets/StyleGuide.vue`
+- **Key files**: `components/inputtext/SwInputText.vue`, `components/inputnumber/SwInputNumber.vue`, `components/textarea/SwTextarea.vue`, `components/switch/SwSwitch.vue`, `components/popover/SwPopover.vue`, `components/tooltip/SwTooltip.vue`, `components/tree/SwTree.vue`, `components/listbox/SwListbox.vue`, `components/iftalabel/SwIftaLabel.vue`, `components/toast/{SwToast,SwToastItem,composable}.ts`, `components/notification/{SwNotification,SwNotificationItem,composable}.ts`, `components/confirm/{SwConfirmDialog.vue, composable.ts}`, `widgets/StyleGuide.vue`
 - **Pattern**: `<script setup lang="ts">`; `v-model` via `modelValue` + `update:modelValue`; default/named slots; toast/notification use module-level composables for global state (`toast.success()/warn()/error()`, `addNotification/removeNotification`).
 
 ### `views/` — Page-level components
@@ -75,8 +76,8 @@
 
 ### `services/` — Business logic & utilities
 - **Purpose**: Standalone composables and services
-- **Key files**: `mobile_menu.ts`, `inference.ts`
-- **Key types/classes**: `useMobileMenu(router?, autoclose?)` → `{isVisible, forceCloseMenu, closeMenu, toggleMenu, hideMenu, link}`; AI streaming hooks (`onTurnStart`, `onToken`, `onThinkingToken`)
+- **Key files**: `mobile_menu.ts`, `inference.ts`, `str.ts`
+- **Key types/classes**: `useMobileMenu(router?, autoclose?)` → `{isVisible, forceCloseMenu, closeMenu, toggleMenu, hideMenu, link}`; AI streaming hooks (`onTurnStart`, `onToken`, `onThinkingToken`); string utilities (`humanize`, `humanizeNumber`, `formatDuration`)
 
 ### `widgets/icons/` — Icon SVG components
 - **Purpose**: Inline SVG icon components
@@ -84,7 +85,7 @@
 
 ### `scss/` — Theme stylesheets
 - **Purpose**: CSS custom property definitions for each theme (light + dark modes)
-- **Key files**: `main.scss` (imports all themes), `default.scss` (base variables), `black.scss`, `navy.scss`, `forest.scss`, `slate.scss`, `royal.scss`, `teal.scss`, `pearl.scss`, `sandstone.scss`, `cloud.scss`, `graphite.scss`, `airy-soft.scss`
+- **Key files**: `main.scss` (imports all themes), `default.scss` (base variables), `black.scss`, `navy.scss`, `forest.scss`, `slate.scss`, `royal.scss`, `teal.scss`, `pearl.scss`, `sandstone.scss`, `cloud.scss`, `graphite.scss`, `airy-soft.scss`, `stone.scss`
 - **CSS variables**: `--prim-*`, `--sec-*`, `--ter-*`, `--success-*`, `--warning-*`, `--danger-*`, `--info-*`, `--background-*`, `--light-*`, `--lighter-*`, `--semilight-*`, `--superlight-*` (each with `-light-bg`, `-light-txt`, `-dark-bg`, `-dark-txt`)
 
 ### `styles/` — Global CSS
@@ -129,7 +130,7 @@
 | `ThemeSwitcher` | Theme dropdown selector | N/A | `TheHeader` |
 | `HelloWorld` | Demo counter component | `msg: String` | `PageView.vue` |
 | `EditAiComponent` | AI streaming editor | N/A | `StyleGuideView.vue` |
-| `Sw-*` (vibe kit) | Form & feedback components (input, number, textarea, switch, popover, tooltip, tree, listbox, ifta-label, toast, notification) | `modelValue`/slots; composable APIs (`toast`, `addNotification`) | `src/vibe/components/` |
+| `Sw-*` (vibe kit) | Form & feedback components (input, number, textarea, switch, popover, tooltip, tree, listbox, ifta-label, toast, notification, confirm) | `modelValue`/slots; composable APIs (`toast`, `addNotification`, `requireConfirmation`) | `src/vibe/components/` |
 
 ### Themes (12 total)
 
@@ -146,6 +147,7 @@
 | `sandstone` | Warm beige/tan | |
 | `cloud` | Light grey-blue | |
 | `airy-soft` | Very light pastel | |
+| `stone` | Neutral warm stone | |
 
 ### Layout Structure (App.vue)
 ```
